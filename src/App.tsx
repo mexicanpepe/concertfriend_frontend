@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from './components/Navbar';
+import ListArtists from "./components/ListArtists";
+import ListConcerts from "./components/ListConcerts";
+import CreateConcert from "./components/CreateConcert";
+import EditConcert from "./components/EditConcert";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/" element={<ListArtists />} />
+          <Route path="/concerts" element={<ListConcerts />} />
+          <Route path="/create-concert/:artistId" element={<CreateConcert />} />
+          <Route path="/edit-concert/:concertId" element={<EditConcert />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
