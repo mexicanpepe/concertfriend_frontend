@@ -17,7 +17,8 @@ const CreateConcert: React.FC = () => {
     e.preventDefault();
     createConcert({
       artist_id: Number(artistId),
-      user_id: 1, // Default user ID
+      //this is the default user ID
+      user_id: 1,
       ...formData,
     })
       .then(() => {
